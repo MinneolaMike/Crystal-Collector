@@ -11,28 +11,28 @@ $(document).ready(function(){
     console.log("The target score is = " + targetScore);
     //Display it in the HTML
     $("#targetscore").text(targetScore);
-    crystalValues();
+    // crystalValues();
     
     //Generate a random value for each Crystal
-    function crystalValues() {
+    // function crystalValues() {
         var redCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("Red Crystal Value = " + redCrystalValue);
-        return redCrystalValue;
+        // return redCrystalValue;
         var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("Black Crystal Value = " + blackCrystalValue);
-        return blackCrystalValue;
+        // return blackCrystalValue;
         var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("yellow Crystal Value = " + yellowCrystalValue);
-        return yellowCrystalValue;
+        // return yellowCrystalValue;
         var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("Purple Crystal Value = " + purpleCrystalValue);
-        return purpleCrystalValue;
-    }
+        // return purpleCrystalValue;
+    // }
     //RE-Assigning Crystal Values to new variables outside the function
-    var redValue = redCrystalValue;
-    var blackValue = blackCrystalValue;
-    var yellowValue = yellowCrystalValue;
-    var purpleValue = purpleCrystalValue;
+    // var redValue = redCrystalValue;
+    // var blackValue = blackCrystalValue;
+    // var yellowValue = yellowCrystalValue;
+    // var purpleValue = purpleCrystalValue;
 
     //Display wins and losses
     $("#wins").text(wins);
@@ -40,28 +40,107 @@ $(document).ready(function(){
     
     //player clicks a crystal and score is updated
     $("#buttonred").on("click", function() {
-        totalScore = totalScore + redValue;
+        totalScore = totalScore + redCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        // return totalScore;
+        // winLoss();
+        if (totalScore === targetScore) {
+            win();
+        }
+        else if (totalScore > targetScore) {
+            loss();
+        }
     })
     $("#buttonblack").on("click" , function() {
-        totalScore = totalScore + blackValue;
+        totalScore = totalScore + blackCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        // return totalScore;
+        // winLoss();
+        if (totalScore === targetScore) {
+            win();
+        }
+        else if (totalScore > targetScore) {
+            loss();
+        }
     })
     $("#buttonyellow").on("click" , function () {
-        totalscore = totalScore + yellowValue;
+        totalScore = totalScore + yellowCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        // return totalScore;
+        // winLoss();
+        if (totalScore === targetScore) {
+            win();
+        }
+        else if (totalScore > targetScore) {
+            loss();
+        }        
     })
     $("#buttonpurple").on("click" , function() {
-        totalScore = totalScore + purpleValue;
+        totalScore = totalScore + purpleCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        // return totalScore;
+        // winLoss();
+        if (totalScore === targetScore) {
+            win();
+        }
+        else if (totalScore > targetScore) {
+            loss();
+        }
     })
+    // var total = totalScore;
 
-    //win
-    //loss
-    //update wins and losses
-    //reset
+    //Win Or Loss and updtae the appropriate score
+    // function winLoss() {
+        // if (total === targetScore){
+            // alert("You Won!!");
+            // wins++;
+            // $("#wins").text(wins);
+            // reset();
+        // }
+        // else if (total > targetScore){
+            // alert("You Lost!!");
+            // losses++;
+            // $("#losses").text(losses);
+            // reset();
+        // }
+    // }
+
+    function win() {
+        alert("You Win!!!");
+        wins++;
+        $("#wins").text(wins);
+        reset();
+    }
+
+    function loss() {
+        alert("You Lose!!!");
+        losses++;
+        $("#losses").text(losses);
+        reset();
+    }
+
+    //Reset
+    function reset(){
+        var targetScore = Math.floor(Math.random() * 101 + 19);
+        console.log("The target score is = " + targetScore);
+        // crystalValues();
+        totalScore = 0;
+        $("#totalscore").text(totalScore);
+        // total = 0;
+        var redCrystalValue = Math.floor(Math.random() * 11 + 1);
+        console.log("Red Crystal Value = " + redCrystalValue);
+        // return redCrystalValue;
+        var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
+        console.log("Black Crystal Value = " + blackCrystalValue);
+        // return blackCrystalValue;
+        var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
+        console.log("yellow Crystal Value = " + yellowCrystalValue);
+        // return yellowCrystalValue;
+        var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
+        console.log("Purple Crystal Value = " + purpleCrystalValue);        
+    }    
 })
