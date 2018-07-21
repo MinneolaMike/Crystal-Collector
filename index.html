@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Page Title-->
     <title>Crystal Collector</title>
-    
+
     <!--CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    
+
     <!--JavaScript-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -26,6 +26,93 @@
 </head>
 
 <body>
+    <!--Start of the Main Container-->
+    <div class="container">
+        <!--Row 1-->
+        <div class="row">
+            <!--Header-->
+            <div class="col-md-12">
+                <h1>Crystal Collector Game!!!</h1>
+            </div>
+        </div>
+        <!--Row 2-->
+        <div class="row">
+            <!--Directions-->
+            <div class="col-md-12">
+                <p>
+                    You will be givena random number at the start of the game.
+                </p>
+                <br>
+                <p>
+                    There are 4 crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
+                </p>
+                <br>
+                <p>
+                    You win the game by matching your total score to the random number, you lose the game if your total score goes above the
+                    random number.
+                </p>
+                <br>
+                <p>
+                    The value of each crystal is hidden from you until you click on it.
+                </p>
+                <br>
+                <p>
+                    Each time the game starts, the game will change the value of each crystal.
+                </p>
+            </div>
+        </div>
+        <!--Row 3-->
+        <div class="row">
+            <!--Column 1 -- Random Target Score-->
+            <div class="col-md-7">
+                <h3>
+                    Target Score:
+                </h3>
+                <br>
+                <span id="targetscore"></span>
+            </div>
+            <!--Column 2 -- Wins/Losses-->
+            <div class="col-md-5">
+                <h2>
+                    Wins: <span id="wins"></span>
+                </h2>
+                <br>
+                <h2>
+                    Losses: <span id="losses"></span>
+                </h2>
+            </div>
+        </div>
+        <!--Row 4-->
+        <div class="row">
+            <!--Column 1 -- Red Crystal-->
+            <div class="col-md-3">
+                <img src="assets/images/crystalred.jpg" class="btn">
+            </div>
+            <!--Column 2 -- Black Crystal-->
+            <div class="col-md-3">
+                <img src="assets/images/crystalblack.jpg" class="btn">
+            </div>
+            <!--Column 3 -- Yellow Crystal-->
+            <div class="col-md-3">
+                <img src="assets/images/crystalyellow.jpg" class="btn">
+            </div>
+            <!--Column 4 -- Purple Crystal-->
+            <div class="col-md-3">
+                <img src="assets/images/crystalpurple.jpg" class="btn">
+            </div>
+        </div>
+        <!--Row 5-->
+        <div class="row">
+            <!--Total Score-->
+            <div class="col-md-12">
+                <h3>
+                    Your Total Score Is:
+                </h3>
+                <br>
+                <span id="totalscore"></span>
+            </div>
+        </div>
+    </div>
 
 </body>
 
