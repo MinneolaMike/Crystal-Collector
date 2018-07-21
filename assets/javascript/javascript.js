@@ -6,6 +6,14 @@ $(document).ready(function(){
     var wins = 0;
     var losses = 0;
 
+    //Audio variables
+    var youWinSound = new Audio("../sounds/win.mp3");
+    var youLoseSound = new Audio("../sounds/lose.mp3");
+    var buttonSound = new Audio("../sounds/button.mp3");
+    var backgroundSound = new Audio("../sounds/chillout.mp3");
+
+    backgroundSound.play();
+
     //Genreate a random Target Score
     var targetScore = Math.floor(Math.random() * 101 + 19);
     console.log("The target score is = " + targetScore);
@@ -43,6 +51,7 @@ $(document).ready(function(){
         totalScore = totalScore + redCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        buttonSound.play();
         // return totalScore;
         // winLoss();
         if (totalScore === targetScore) {
@@ -56,6 +65,7 @@ $(document).ready(function(){
         totalScore = totalScore + blackCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        buttonSound.play();
         // return totalScore;
         // winLoss();
         if (totalScore === targetScore) {
@@ -69,6 +79,7 @@ $(document).ready(function(){
         totalScore = totalScore + yellowCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        buttonSound.play();
         // return totalScore;
         // winLoss();
         if (totalScore === targetScore) {
@@ -82,6 +93,7 @@ $(document).ready(function(){
         totalScore = totalScore + purpleCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
+        buttonSound.play();
         // return totalScore;
         // winLoss();
         if (totalScore === targetScore) {
@@ -113,6 +125,7 @@ $(document).ready(function(){
         alert("You Win!!!");
         wins++;
         $("#wins").text(wins);
+        youWinSound.play();
         reset();
     }
 
@@ -120,6 +133,7 @@ $(document).ready(function(){
         alert("You Lose!!!");
         losses++;
         $("#losses").text(losses);
+        youLoseSound.play();
         reset();
     }
 
@@ -141,6 +155,7 @@ $(document).ready(function(){
         console.log("yellow Crystal Value = " + yellowCrystalValue);
         // return yellowCrystalValue;
         var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Purple Crystal Value = " + purpleCrystalValue);        
+        console.log("Purple Crystal Value = " + purpleCrystalValue);
+        chilloutSound.play();        
     }    
 })
