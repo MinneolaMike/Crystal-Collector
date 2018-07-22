@@ -12,8 +12,13 @@ $(document).ready(function () {
     var buttonSound = new Audio("assets/audio/button.mp3");
     var backgroundSound = new Audio("assets/audio/chillout.mp3");
 
-    backgroundSound.play();
+    //Starts the audio
+    window.onload = function(){
+        backgroundSound.play();
+    }
 
+    // backgroundSound.play();
+    
     //Genreate a random Target Score between 19 - 120
     var targetScore = Math.floor(Math.random() * 101 + 19);
     console.log("The target score is = " + targetScore);
