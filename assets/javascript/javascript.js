@@ -1,16 +1,16 @@
 //Setting the game up to run when the window has finshed loading
-$(document).ready(function(){
-    
+$(document).ready(function () {
+
     //Global Variables
     var totalScore = 0;
     var wins = 0;
     var losses = 0;
 
-    //Audio variables
-    var youWinSound = new Audio("../sounds/win.mp3");
-    var youLoseSound = new Audio("../sounds/lose.mp3");
-    var buttonSound = new Audio("../sounds/button.mp3");
-    var backgroundSound = new Audio("../sounds/chillout.mp3");
+    // Audio variables
+    var youWinSound = new Audio("assets/audio/win.mp3");
+    var youLoseSound = new Audio("assets/audio/lose.mp3");
+    var buttonSound = new Audio("assets/audio/button.mp3");
+    var backgroundSound = new Audio("assets/audio/chillout.mp3");
 
     backgroundSound.play();
 
@@ -19,41 +19,28 @@ $(document).ready(function(){
     console.log("The target score is = " + targetScore);
     //Display it in the HTML
     $("#targetscore").text(targetScore);
-    // crystalValues();
-    
+
     //Generate a random value for each Crystal
-    // function crystalValues() {
-        var redCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Red Crystal Value = " + redCrystalValue);
-        // return redCrystalValue;
-        var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Black Crystal Value = " + blackCrystalValue);
-        // return blackCrystalValue;
-        var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("yellow Crystal Value = " + yellowCrystalValue);
-        // return yellowCrystalValue;
-        var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Purple Crystal Value = " + purpleCrystalValue);
-        // return purpleCrystalValue;
-    // }
-    //RE-Assigning Crystal Values to new variables outside the function
-    // var redValue = redCrystalValue;
-    // var blackValue = blackCrystalValue;
-    // var yellowValue = yellowCrystalValue;
-    // var purpleValue = purpleCrystalValue;
+    var redCrystalValue = Math.floor(Math.random() * 11 + 1);
+    console.log("Red Crystal Value = " + redCrystalValue);
+    var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
+    console.log("Black Crystal Value = " + blackCrystalValue);
+    var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
+    console.log("yellow Crystal Value = " + yellowCrystalValue);
+    var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
+    console.log("Purple Crystal Value = " + purpleCrystalValue);
+
 
     //Display wins and losses
     $("#wins").text(wins);
     $("#losses").text(losses);
-    
-    //player clicks a crystal and score is updated
-    $("#buttonred").on("click", function() {
+
+    //player clicks a crystal, score is updated, and win/loss determined
+    $("#buttonred").on("click", function () {
         totalScore = totalScore + redCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         buttonSound.play();
-        // return totalScore;
-        // winLoss();
         if (totalScore === targetScore) {
             win();
         }
@@ -61,13 +48,11 @@ $(document).ready(function(){
             loss();
         }
     })
-    $("#buttonblack").on("click" , function() {
+    $("#buttonblack").on("click", function () {
         totalScore = totalScore + blackCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         buttonSound.play();
-        // return totalScore;
-        // winLoss();
         if (totalScore === targetScore) {
             win();
         }
@@ -75,27 +60,23 @@ $(document).ready(function(){
             loss();
         }
     })
-    $("#buttonyellow").on("click" , function () {
+    $("#buttonyellow").on("click", function () {
         totalScore = totalScore + yellowCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         buttonSound.play();
-        // return totalScore;
-        // winLoss();
         if (totalScore === targetScore) {
             win();
         }
         else if (totalScore > targetScore) {
             loss();
-        }        
+        }
     })
-    $("#buttonpurple").on("click" , function() {
+    $("#buttonpurple").on("click", function () {
         totalScore = totalScore + purpleCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         buttonSound.play();
-        // return totalScore;
-        // winLoss();
         if (totalScore === targetScore) {
             win();
         }
@@ -103,59 +84,41 @@ $(document).ready(function(){
             loss();
         }
     })
-    // var total = totalScore;
 
-    //Win Or Loss and updtae the appropriate score
-    // function winLoss() {
-        // if (total === targetScore){
-            // alert("You Won!!");
-            // wins++;
-            // $("#wins").text(wins);
-            // reset();
-        // }
-        // else if (total > targetScore){
-            // alert("You Lost!!");
-            // losses++;
-            // $("#losses").text(losses);
-            // reset();
-        // }
-    // }
-
+    //Win Function
     function win() {
+        youWinSound.play();
         alert("You Win!!!");
         wins++;
         $("#wins").text(wins);
-        youWinSound.play();
         reset();
     }
 
+    //Loss Function
     function loss() {
+        youLoseSound.play();
         alert("You Lose!!!");
         losses++;
         $("#losses").text(losses);
-        youLoseSound.play();
         reset();
     }
 
     //Reset
-    function reset(){
+    function reset() {
+        targetScore = 0;
         var targetScore = Math.floor(Math.random() * 101 + 19);
-        console.log("The target score is = " + targetScore);
-        // crystalValues();
+        $("#targetscore").text(targetScore);
+        console.log("New target score is : " + targetScore);
         totalScore = 0;
         $("#totalscore").text(totalScore);
-        // total = 0;
         var redCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Red Crystal Value = " + redCrystalValue);
-        // return redCrystalValue;
+        console.log("New red crystal value : " + redCrystalValue);
         var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Black Crystal Value = " + blackCrystalValue);
-        // return blackCrystalValue;
+        console.log("New black crystal value: " + blackCrystalValue);
         var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("yellow Crystal Value = " + yellowCrystalValue);
-        // return yellowCrystalValue;
+        console.log("New yellow crystal value: " + yellowCrystalValue);
         var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
-        console.log("Purple Crystal Value = " + purpleCrystalValue);
-        chilloutSound.play();        
-    }    
+        console.log("New Purple Crystal Value: " + purpleCrystalValue);
+        backgroundSound.play();
+    }
 })
