@@ -14,13 +14,13 @@ $(document).ready(function () {
 
     backgroundSound.play();
 
-    //Genreate a random Target Score
+    //Genreate a random Target Score between 19 - 120
     var targetScore = Math.floor(Math.random() * 101 + 19);
     console.log("The target score is = " + targetScore);
     //Display it in the HTML
     $("#targetscore").text(targetScore);
 
-    //Generate a random value for each Crystal
+    //Generate a random value for each Crystal between 1 - 12
     var redCrystalValue = Math.floor(Math.random() * 11 + 1);
     console.log("Red Crystal Value = " + redCrystalValue);
     var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
