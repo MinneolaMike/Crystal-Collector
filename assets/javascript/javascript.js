@@ -15,6 +15,7 @@ $(document).ready(function () {
     //Starts the audio
     window.onload = function(){
         backgroundSound.play();
+        console.log("Onload Fired");
     }
 
     // backgroundSound.play();
