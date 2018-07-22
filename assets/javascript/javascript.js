@@ -14,11 +14,9 @@ $(document).ready(function () {
 
     //Starts the audio
     window.onload = function(){
-        backgroundSound.play();
+        setTimeout(backgroundSound.play(), 3000);
         console.log("Onload Fired");
     }
-
-    // backgroundSound.play();
     
     //Genreate a random Target Score between 19 - 120
     var targetScore = Math.floor(Math.random() * 101 + 19);
@@ -43,10 +41,10 @@ $(document).ready(function () {
 
     //player clicks a crystal, score is updated, and win/loss determined
     $("#buttonred").on("click", function () {
+        buttonSound.play();
         totalScore = totalScore + redCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
-        buttonSound.play();
         if (totalScore === targetScore) {
             win();
         }
@@ -55,10 +53,10 @@ $(document).ready(function () {
         }
     })
     $("#buttonblack").on("click", function () {
+        buttonSound.play();
         totalScore = totalScore + blackCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
-        buttonSound.play();
         if (totalScore === targetScore) {
             win();
         }
@@ -67,10 +65,10 @@ $(document).ready(function () {
         }
     })
     $("#buttonyellow").on("click", function () {
+        buttonSound.play();
         totalScore = totalScore + yellowCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
-        buttonSound.play();
         if (totalScore === targetScore) {
             win();
         }
@@ -79,10 +77,10 @@ $(document).ready(function () {
         }
     })
     $("#buttonpurple").on("click", function () {
+        buttonSound.play();
         totalScore = totalScore + purpleCrystalValue;
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
-        buttonSound.play();
         if (totalScore === targetScore) {
             win();
         }
@@ -112,18 +110,18 @@ $(document).ready(function () {
     //Reset
     function reset() {
         targetScore = 0;
-        var targetScore = Math.floor(Math.random() * 101 + 19);
+        targetScore = Math.floor(Math.random() * 101 + 19);
         $("#targetscore").text(targetScore);
         console.log("New target score is : " + targetScore);
         totalScore = 0;
         $("#totalscore").text(totalScore);
-        var redCrystalValue = Math.floor(Math.random() * 11 + 1);
+        redCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("New red crystal value : " + redCrystalValue);
-        var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
+        blackCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("New black crystal value: " + blackCrystalValue);
-        var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
+        yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("New yellow crystal value: " + yellowCrystalValue);
-        var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
+        purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
         console.log("New Purple Crystal Value: " + purpleCrystalValue);
         backgroundSound.play();
     }
