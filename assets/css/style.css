@@ -27,7 +27,6 @@ h2 {
     font-family: 'Bungee Inline', cursive;
 }
 
-img:hover {
-    background-color: lightgray;
+#buttonstart {
+    margin-left: 357px; 
 }
-
