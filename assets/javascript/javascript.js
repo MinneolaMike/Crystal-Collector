@@ -1,22 +1,32 @@
 //Setting the game up to run when the window has finshed loading
 $(document).ready(function () {
 
+    $("#buttonstart").on("click", function () {
+        $("#slide").slideUp();
+        backgroundSound.play();
+        console.log("slide fired");
+    })
+
+    // $("#buttonstart").click(function(){
+        // $("#slide").slideUp();
+        // backgroundSound.play();
+    // });
     //Global Variables
     var totalScore = 0;
     var wins = 0;
     var losses = 0;
 
     // Audio variables
-    var youWinSound = new Audio("assets/audio/win.mp3");
+    var youWinSound = new Audio("assets/audio/win.wav");
     var youLoseSound = new Audio("assets/audio/lose.mp3");
     var buttonSound = new Audio("assets/audio/button.mp3");
     var backgroundSound = new Audio("assets/audio/chillout.mp3");
 
     //Starts the audio
-    window.onload = function(){
-        setTimeout(backgroundSound.play(), 3000);
-        console.log("Onload Fired");
-    }
+    // window.onload = function(){
+        // setTimeout(backgroundSound.play(), 3000);
+        // console.log("Onload Fired");
+    // }
     
     //Genreate a random Target Score between 19 - 120
     var targetScore = Math.floor(Math.random() * 101 + 19);
@@ -46,9 +56,11 @@ $(document).ready(function () {
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         if (totalScore === targetScore) {
+            backgroundSound.pause();
             win();
         }
         else if (totalScore > targetScore) {
+            backgroundSound.pause();
             loss();
         }
     })
@@ -58,9 +70,11 @@ $(document).ready(function () {
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         if (totalScore === targetScore) {
+            backgroundSound.pause();
             win();
         }
         else if (totalScore > targetScore) {
+            backgroundSound.pause();
             loss();
         }
     })
@@ -70,9 +84,11 @@ $(document).ready(function () {
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         if (totalScore === targetScore) {
+            backgroundSound.pause();
             win();
         }
         else if (totalScore > targetScore) {
+            backgroundSound.pause();
             loss();
         }
     })
@@ -82,9 +98,11 @@ $(document).ready(function () {
         $("#totalscore").text(totalScore);
         console.log("Total Score is : " + totalScore);
         if (totalScore === targetScore) {
+            backgroundSound.pause();
             win();
         }
         else if (totalScore > targetScore) {
+            backgroundSound.pause();
             loss();
         }
     })
@@ -92,6 +110,7 @@ $(document).ready(function () {
     //Win Function
     function win() {
         youWinSound.play();
+        youWinSound.volume=1;
         alert("You Win!!!");
         wins++;
         $("#wins").text(wins);
