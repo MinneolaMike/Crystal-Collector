@@ -1,49 +1,44 @@
 //Setting the game up to run when the window has finshed loading
 $(document).ready(function () {
 
-    $("#buttonstart").on("click", function () {
-        $("#slide").slideUp();
-        backgroundSound.play();
-        console.log("slide fired");
-    })
-
-    // $("#buttonstart").click(function(){
-        // $("#slide").slideUp();
-        // backgroundSound.play();
-    // });
     //Global Variables
     var totalScore = 0;
     var wins = 0;
     var losses = 0;
+    var targetScore = 0;
+    var redCrystalValue = 0;
+    var blackCrystalValue = 0;
+    var yellowCrystalValue = 0;
+    var purpleCrystalValue = 0;
 
     // Audio variables
     var youWinSound = new Audio("assets/audio/win.wav");
     var youLoseSound = new Audio("assets/audio/lose.mp3");
     var buttonSound = new Audio("assets/audio/button.mp3");
     var backgroundSound = new Audio("assets/audio/chillout.mp3");
-
-    //Starts the audio
-    // window.onload = function(){
-        // setTimeout(backgroundSound.play(), 3000);
-        // console.log("Onload Fired");
-    // }
     
+    //Start button that starts the game, audio, and slides up non-game content 
+    $("#buttonstart").on("click", function () {
+        $("#slide").slideUp();
+        backgroundSound.play();
+        console.log("slide fired");
+
     //Genreate a random Target Score between 19 - 120
-    var targetScore = Math.floor(Math.random() * 101 + 19);
+    targetScore = Math.floor(Math.random() * 102 + 19);
     console.log("The target score is = " + targetScore);
     //Display it in the HTML
     $("#targetscore").text(targetScore);
 
     //Generate a random value for each Crystal between 1 - 12
-    var redCrystalValue = Math.floor(Math.random() * 11 + 1);
+    redCrystalValue = Math.floor(Math.random() * 12 + 1);
     console.log("Red Crystal Value = " + redCrystalValue);
-    var blackCrystalValue = Math.floor(Math.random() * 11 + 1);
+    blackCrystalValue = Math.floor(Math.random() * 12 + 1);
     console.log("Black Crystal Value = " + blackCrystalValue);
-    var yellowCrystalValue = Math.floor(Math.random() * 11 + 1);
+    yellowCrystalValue = Math.floor(Math.random() * 12 + 1);
     console.log("yellow Crystal Value = " + yellowCrystalValue);
-    var purpleCrystalValue = Math.floor(Math.random() * 11 + 1);
+    purpleCrystalValue = Math.floor(Math.random() * 12 + 1);
     console.log("Purple Crystal Value = " + purpleCrystalValue);
-
+    // });
 
     //Display wins and losses
     $("#wins").text(wins);
@@ -107,23 +102,35 @@ $(document).ready(function () {
         }
     })
 
+});
+
     //Win Function
     function win() {
+        $("#winModal").modal('show');
         youWinSound.play();
         youWinSound.volume=1;
-        alert("You Win!!!");
+        // alert("You Win!!!");
         wins++;
         $("#wins").text(wins);
-        reset();
+        $("button").on("click", function() {
+            reset();
+            $("#winModal").modal('hide');
+            console.log("Play Again Fired");
+        });
     }
 
     //Loss Function
     function loss() {
+        $("#loseModal").modal('show');
         youLoseSound.play();
-        alert("You Lose!!!");
+        // alert("You Lose!!!");
         losses++;
         $("#losses").text(losses);
-        reset();
+        $("button").on("click", function() {
+            reset();
+            $("#loseModal").modal('hide');
+            console.log("Play Again Fired");
+        });
     }
 
     //Reset
